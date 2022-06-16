@@ -1,0 +1,33 @@
+{
+  "name": "projeto",
+  "version": "1.0.0",
+  "description": "Estágio",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "nodemon"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mikaelhuk/Projeto.git"
+  },
+  "keywords": [
+    "node",
+    "express"
+  ],
+  "author": "Mikael Kamazaki",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mikaelhuk/Projeto/issues"
+  },
+  "homepage": "https://github.com/mikaelhuk/Projeto#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "knex": "^2.1.0",
+    "sqlite3": "^5.0.8"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.16"
+  }
+}
