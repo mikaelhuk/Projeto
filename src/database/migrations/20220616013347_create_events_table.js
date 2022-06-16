@@ -12,6 +12,7 @@ exports.up = function(knex) {
             table.string('descrição').notNullable();
             table.timestamp('hora_de_início').notNullable();
             table.timestamp('hora_de_término').notNullable();
+            table.date('data').notNullable();
         }
     )
   
