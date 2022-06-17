@@ -5,7 +5,7 @@ module.exports = {
 
     async index(request, response) {
         const {user_id} = request.query;
-        const results = await knex('eventos').where('user_id', 2)
+        const results = await knex('eventos').where('user_id', user_id);
         return response.json(results)
     },
 
@@ -19,7 +19,8 @@ module.exports = {
     },
 
     async delete(request, response, next) {
-        try{const {id} = request.query;
+        try{
+        const {id} = request.query;
         await knex('eventos').where({id}).del();
 
         return response.send();
