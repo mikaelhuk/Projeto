@@ -1,5 +1,7 @@
 const knex = require('../database/connection');
 const { compare } = require('bcryptjs');
+const authConfig = require('../config/auth');
+const { sign } = require('jsonwebtoken');
 
 
 module.exports = {
@@ -17,7 +19,16 @@ module.exports = {
             return response.status(400).json({error: 'email ou senha inválidos.'});
         }
 
-        return response.json({message: 'ok'});
+        const { secret, expiresIn } = authConfig.jwt;
+
+        const token = sign({}, secret, {
+          subject: user.id.toString(),
+          expiresIn,
+        });
+    
+        delete user.senha;
+    
+        return response.json({ user, token });
     }
 
 }
