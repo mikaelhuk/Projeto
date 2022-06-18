@@ -3,10 +3,14 @@ const knex = require('../database/connection');
 
 module.exports = {
 
-    async index(request, response) {
-        const {user_id} = request.query;
-        const results = await knex('eventos').where('user_id', user_id);
-        return response.json(results)
+    async index(request, response, next) {
+        try{
+            const { user_id } = request.params;
+            const results = await knex('eventos').where('user_id', user_id);
+            return response.json(results)
+        }catch (error){
+            next(error);
+        }
     },
 
     async create(request, response) {
@@ -19,29 +23,29 @@ module.exports = {
     },
 
     async delete(request, response, next) {
-        try{
-        const {id} = request.query;
-        await knex('eventos').where({id}).del();
+        try {
+            const { id } = request.params;
+            await knex('eventos').where({ id }).del();
 
-        return response.send();
-    }catch(error) {
-        next(error);
-    }
-        
+            return response.send();
+        } catch (error) {
+            next(error);
+        }
+
 
 
     },
 
     async update(request, response, next) {
-        try{
+        try {
             const body = { user_id, descrição, hora_de_início, hora_de_término, data } = request.body;
-            const {id} = request.query;
+            const { id } = request.params;
 
 
             await knex('eventos').update(body).where('id', id);
             return response.send()
 
-        }catch (error){
+        } catch (error) {
             next(error)
         }
 
