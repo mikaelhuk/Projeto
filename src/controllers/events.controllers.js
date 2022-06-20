@@ -14,9 +14,9 @@ module.exports = {
     },
 
     async create(request, response) {
-        const { user_id, descrição, hora_de_início, hora_de_término, data } = request.body;
+        const { user_id, descricao, inicio, termino} = request.body;
 
-        await knex('eventos').insert({ user_id, descrição, hora_de_início, hora_de_término, data });
+        await knex('eventos').insert({ user_id, descricao, inicio, termino});
         return response.status(200).json({
             message: 'God'
         })
@@ -38,7 +38,7 @@ module.exports = {
 
     async update(request, response, next) {
         try {
-            const body = { user_id, descrição, hora_de_início, hora_de_término, data } = request.body;
+            const body = { user_id, descricao, inicio, termino } = request.body;
             const { id } = request.params;
 
 

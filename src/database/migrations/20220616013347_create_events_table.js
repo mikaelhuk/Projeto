@@ -9,9 +9,9 @@ exports.up = function(knex) {
             table.bigIncrements('id');
             table.bigInteger('user_id').notNullable();
             table.foreign('user_id').onDelete('CASCADE').references('id').inTable('users');
-            table.string('descrição').notNullable();
-            table.timestamp('hora_de_início').notNullable();
-            table.timestamp('hora_de_término').notNullable();
+            table.string('descricao').notNullable();
+            table.timestamp('inicio').notNullable();
+            table.timestamp('termino').notNullable();
         }
     )
   
