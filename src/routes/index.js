@@ -8,4 +8,5 @@ const routes = express.Router();
 routes.use('/events', events_routes);
 routes.use('/user', user_routes);
 routes.use('/login', login_routes);
+
 module.exports = routes;
